@@ -8,10 +8,16 @@ myform.myfile.addEventListener('change', function (e) {
   });
 });
 
-const showAll = () => {
-  let table = document.getElementById('result-table');
+let table = document.getElementById('result-table');
 
+const showAll = () => {
   for (let i = 0, datasLength = datas.length; i < datasLength; i++) {
+    createRecord(table, datas[i], i);
+  }
+}
+
+const showPart = count => {
+  for (let i = 0; i < count; i++) {
     createRecord(table, datas[i], i);
   }
 }
