@@ -8,7 +8,7 @@ myform.myfile.addEventListener('change', function (e) {
   });
 });
 
-function showAll() {
+const showAll = () => {
   let table = document.getElementById('result-table');
 
   for (let i = 0; i < datas.length; i++) {
