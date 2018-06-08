@@ -11,7 +11,7 @@ myform.myfile.addEventListener('change', function (e) {
 const showAll = () => {
   let table = document.getElementById('result-table');
 
-  for (let i = 0; i < datas.length; i++) {
+  for (let i = 0, datasLength = datas.length; i < datasLength; i++) {
     createRecord(table, datas[i], i);
   }
 }
