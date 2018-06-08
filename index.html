@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="./src/stylesheets/style.css">
   <title>jig.jpインターン課題</title>
 </head>
 <body>
@@ -9,6 +10,32 @@
   <form name="myform" id="myform">
     <input name="myfile" type="file">
   </form>
+  <button onclick="showAll()">全件表示</button>
+
+  <br>
+  <br>
+
+  <table id="result-table">
+    <thead>
+      <tr>
+        <th>番号</th>
+        <th>イベント名</th>
+        <th>カテゴリー</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>説明</th>
+        <th>予定の詳細</th>
+        <th>お問い合わせ先</th>
+        <th>お問い合わせ先電話番号</th>
+        <th>イベント場所</th>
+        <th>緯度</th>
+        <th>軽度</th>
+        <th>市町村</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 
   <script src="./src/javascripts/script.js"></script>
 </body>
