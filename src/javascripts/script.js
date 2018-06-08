@@ -12,8 +12,7 @@ const showAll = () => {
   let table = document.getElementById('result-table');
 
   for (let i = 0; i < datas.length; i++) {
-    let data = datas[i];
-    createRecord(table, data, i);
+    createRecord(table, datas[i], i);
   }
 }
 
