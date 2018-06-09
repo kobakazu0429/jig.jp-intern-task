@@ -12,9 +12,9 @@ myform.myfile.addEventListener('change', function (e) {
   });
 });
 
-const showAll = () => {
-  for (let i = 0, datasLength = datas.length; i < datasLength; i++) {
-    createRecord(table, datas[i], i);
+const show = (arr) => {
+  for (let i = 0, arrLength = arr.length; i < arrLength; i++) {
+    createRecord(table, arr[i], i);
   }
 }
 
@@ -89,4 +89,18 @@ const refine = () => {
     option.innerHTML = addtional_option[i];
     select.appendChild(option);
   }
+}
+
+const filter = arg => {
+  clearTable();
+
+  let tmp_arr = [];
+
+  for (let i = 0; i < datas.length; i++) {
+    if (arg === datas[i].category) {
+      tmp_arr.push(datas[i]);
+    }
+  }
+
+  show(tmp_arr);
 }
