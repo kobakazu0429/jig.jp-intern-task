@@ -117,9 +117,21 @@ const search = query => {
       tmp_arr.push(datas[i]);
     } else if (reg.test(datas[i].category)) {
       tmp_arr.push(datas[i]);
+    } else if (reg.test(datas[i].start_date)) {
+      tmp_arr.push(datas[i]);
+    } else if (reg.test(datas[i].end_date)) {
+      tmp_arr.push(datas[i]);
     } else if (reg.test(datas[i].description)) {
       tmp_arr.push(datas[i]);
+    } else if (reg.test(datas[i].schedule_description)) {
+      tmp_arr.push(datas[i]);
+    } else if (reg.test(datas[i].contact)) {
+      tmp_arr.push(datas[i]);
+    } else if (reg.test(datas[i].contact_phone_number)) {
+      tmp_arr.push(datas[i]);
     } else if (reg.test(datas[i].event_place)) {
+      tmp_arr.push(datas[i]);
+    } else if (reg.test(datas[i].city)) {
       tmp_arr.push(datas[i]);
     }
   }
