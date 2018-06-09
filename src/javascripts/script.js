@@ -9,6 +9,7 @@ myform.myfile.addEventListener('change', function (e) {
   reader.addEventListener('load', function (ev) {
     datas = JSON.parse(ev.target.result);
     refine();
+    show(datas);
   });
 });
 
