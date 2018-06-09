@@ -1,22 +1,22 @@
 let myform = document.getElementById('myform');
 let reader = new FileReader();
+let table = document.getElementById('result-table');
+let skip, lastIndex;
+let select = document.getElementById('category');
 
 myform.myfile.addEventListener('change', function (e) {
   reader.readAsText(e.target.files[0]);
   reader.addEventListener('load', function (ev) {
     datas = JSON.parse(ev.target.result);
+    refine();
   });
 });
 
-let table = document.getElementById('result-table');
-
-const showAll = () => {
-  for (let i = 0, datasLength = datas.length; i < datasLength; i++) {
-    createRecord(table, datas[i], i);
+const show = (arr) => {
+  for (let i = 0, arrLength = arr.length; i < arrLength; i++) {
+    createRecord(table, arr[i], i);
   }
 }
-
-let skip, lastIndex;
 
 const showPart10 = () => {
   skip = 10;
@@ -72,4 +72,35 @@ const clearTable = () => {
   for (let i = recordLength - 1; i > 0; i--) {
     table.deleteRow(i);
   }
+}
+
+const refine = () => {
+  let tmp_arr = [];
+
+  for (let i = 0; i < datas.length; i++) {
+    tmp_arr.push(datas[i].category);
+  }
+
+  let addtional_option = Array.from(new Set(tmp_arr));
+
+  for (let i = 0; i < addtional_option.length; i++) {
+    let option = document.createElement('option');
+    option.setAttribute('value', addtional_option[i]);
+    option.innerHTML = addtional_option[i];
+    select.appendChild(option);
+  }
+}
+
+const filter = arg => {
+  clearTable();
+
+  let tmp_arr = [];
+
+  for (let i = 0; i < datas.length; i++) {
+    if (arg === datas[i].category) {
+      tmp_arr.push(datas[i]);
+    }
+  }
+
+  show(tmp_arr);
 }

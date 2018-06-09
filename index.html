@@ -10,15 +10,19 @@
   <form name="myform" id="myform">
     <input name="myfile" type="file">
   </form>
+
   <button onclick="showPart10()">10件ずつ表示</button>
   <button onclick="showPart30()">30件ずつ表示</button>
-  <button onclick="showAll()">全件表示</button>
+  <button onclick="show(datas)">全件表示</button>
+
+  <select name="category" id="category" onchange="filter(this.value)"></select>
 
   <br>
 
   <button onclick="next()">次を表示する</button>
   <button onclick="previous()">前を表示する</button>
   <button onclick="clearTable()">削除</button>
+
   <br>
   <br>
 
