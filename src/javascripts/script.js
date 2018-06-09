@@ -104,3 +104,26 @@ const filter = arg => {
 
   show(tmp_arr);
 }
+
+const search = query => {
+  clearTable();
+
+  reg = new RegExp(query);
+  let tmp_arr = [];
+
+  for (let i = 0; i < datas.length; i++) {
+    if (reg.test(datas[i].event_name)) {
+      tmp_arr.push(datas[i]);
+    } else if (reg.test(datas[i].category)) {
+      tmp_arr.push(datas[i]);
+    } else if (reg.test(datas[i].description)) {
+      tmp_arr.push(datas[i]);
+    } else if (reg.test(datas[i].event_place)) {
+      tmp_arr.push(datas[i]);
+    }
+  }
+
+  if (tmp_arr.length === 0) show([{ "event_name": "一致するものがありませんでした", "category": "", "start_date": "", "end_date": "", "description": "", "schedule_description": "", "contact": "", "contact_phone_number": "", "event_place": "", "latitude": "", "longitude": "", "city": "" }]);
+
+  show(tmp_arr);
+}
