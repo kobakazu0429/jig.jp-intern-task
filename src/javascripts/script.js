@@ -62,9 +62,7 @@ const createRecord = (table, data, count) => {
   tr.insertCell(-1).innerHTML = data.schedule_description;
   tr.insertCell(-1).innerHTML = data.contact;
   tr.insertCell(-1).innerHTML = data.contact_phone_number;
-  tr.insertCell(-1).innerHTML = data.event_place;
-  tr.insertCell(-1).innerHTML = data.latitude;
-  tr.insertCell(-1).innerHTML = data.longitude;
+  tr.insertCell(-1).innerHTML = data.event_place + createGoogleMapsURL(data.latitude, data.longitude);
   tr.insertCell(-1).innerHTML = data.city;
 }
 
@@ -139,4 +137,8 @@ const search = query => {
   if (tmp_arr.length === 0) show([{ "event_name": "一致するものがありませんでした", "category": "", "start_date": "", "end_date": "", "description": "", "schedule_description": "", "contact": "", "contact_phone_number": "", "event_place": "", "latitude": "", "longitude": "", "city": "" }]);
 
   show(tmp_arr);
+}
+
+const createGoogleMapsURL = (lat, lon) => {
+  return '<br><a href="https://www.google.com/maps?q=' + lat + ',' + lon + '" target="_blank">GoogleMapsで確認する</a>';
 }
