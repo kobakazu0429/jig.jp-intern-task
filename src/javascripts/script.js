@@ -1,6 +1,6 @@
 let myform = document.getElementById('myform');
 let reader = new FileReader();
-let table = document.getElementById('result-table');
+let tbody = document.getElementById('result-table-body');
 let skip, lastIndex;
 let select = document.getElementById('category');
 
@@ -14,44 +14,50 @@ myform.myfile.addEventListener('change', function (e) {
 });
 
 const show = (arr) => {
+  lastIndex = 0;
   for (let i = 0, arrLength = arr.length; i < arrLength; i++) {
-    createRecord(table, arr[i], i);
+    createRow(arr[i], i);
   }
 }
 
 const showPart10 = () => {
   skip = 10;
   lastIndex = 0;
-  clearTable();
+  clearTBody();
   showPart(0, skip);
 }
 
 const showPart30 = () => {
   skip = 30;
   lastIndex = 0;
-  clearTable();
+  clearTBody();
   showPart(0, skip);
 }
 
 const showPart = (begin, type) => {
   lastIndex += type;
   for (let i = begin; i < begin + Math.abs(type); i++) {
-    createRecord(table, datas[i], i);
+    createRow(datas[i], i);
   }
 }
 
 const next = () => {
-  clearTable();
+  clearTBody();
   showPart(lastIndex, skip);
 }
 
 const previous = () => {
-  clearTable();
+  clearTBody();
   showPart(lastIndex - (2 * skip), (-1 * skip));
 }
 
-const createRecord = (table, data, count) => {
-  let tr = table.insertRow(-1);
+const createRow = (data, count) => {
+  if (count < 0) {
+    lastIndex = 0;
+    return;
+  }
+
+  let tr = tbody.insertRow(-1);
 
   tr.insertCell(-1).innerHTML = count + 1;
   tr.insertCell(-1).innerHTML = data.event_name;
@@ -66,23 +72,23 @@ const createRecord = (table, data, count) => {
   tr.insertCell(-1).innerHTML = data.city;
 }
 
-const clearTable = () => {
-  let recordLength = table.rows.length;
-  for (let i = recordLength - 1; i > 0; i--) {
-    table.deleteRow(i);
+const clearTBody = () => {
+  let rowLength = tbody.rows.length;
+  for (let i = rowLength; i > 0; i--) {
+    tbody.deleteRow(-1);
   }
 }
 
 const refine = () => {
   let tmp_arr = [];
 
-  for (let i = 0; i < datas.length; i++) {
+  for (let i = 0, datasLength = datas.length; i < datasLength; i++) {
     tmp_arr.push(datas[i].category);
   }
 
   let addtional_option = Array.from(new Set(tmp_arr));
 
-  for (let i = 0; i < addtional_option.length; i++) {
+  for (let i = 0, addLen = addtional_option.length; i < addLen; i++) {
     let option = document.createElement('option');
     option.setAttribute('value', addtional_option[i]);
     option.innerHTML = addtional_option[i];
@@ -91,11 +97,11 @@ const refine = () => {
 }
 
 const filter = arg => {
-  clearTable();
+  clearTBody();
 
   let tmp_arr = [];
 
-  for (let i = 0; i < datas.length; i++) {
+  for (let i = 0, datasLength = datas.length; i < datasLength; i++) {
     if (arg === datas[i].category) {
       tmp_arr.push(datas[i]);
     }
@@ -105,12 +111,12 @@ const filter = arg => {
 }
 
 const search = query => {
-  clearTable();
+  clearTBody();
 
   reg = new RegExp(query);
   let tmp_arr = [];
 
-  for (let i = 0; i < datas.length; i++) {
+  for (let i = 0, datasLength = datas.length; i < datasLength; i++) {
     if (reg.test(datas[i].event_name)) {
       tmp_arr.push(datas[i]);
     } else if (reg.test(datas[i].category)) {
