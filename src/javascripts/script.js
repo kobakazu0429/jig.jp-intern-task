@@ -1,6 +1,8 @@
 let myform = document.getElementById('myform');
 let reader = new FileReader();
+let table = document.getElementById('result-table');
 let tbody = document.getElementById('result-table-body');
+let ths = document.getElementsByTagName('th');
 let skip, lastIndex;
 let select = document.getElementById('category');
 
@@ -10,6 +12,7 @@ myform.myfile.addEventListener('change', function (e) {
     datas = JSON.parse(ev.target.result);
     refine();
     show(datas);
+    createEventListener();
   });
 });
 
@@ -148,3 +151,38 @@ const search = query => {
 const createGoogleMapsURL = (lat, lon) => {
   return '<br><a href="https://www.google.com/maps?q=' + lat + ',' + lon + '" target="_blank">GoogleMapsで確認する</a>';
 }
+
+const createEventListener = () => {
+  for (let i = 0, thsLen = ths.length; i < thsLen; i++) {
+    ths[i].addEventListener("click", sortEvent(table.tBodies[0], i));
+  }
+}
+
+const sortEvent = (tbody, idx) => {
+  let mode = true;
+  return () => {
+    mode ? sort(tbody, asc(idx)) : sort(tbody, desc(idx));
+    mode = !mode;
+  }
+}
+
+const sort = (tbody, compareFunction) => {
+  const rows = tbody.rows;
+  if (!rows || !rows[0] || rows.length == 1) return;
+
+  const rowLen = rows.length;
+  const tmp_arr = [];
+
+  for (let row of rows) tmp_arr.push(row);
+
+  tmp_arr.sort(compareFunction);
+
+  for (let i = rowLen - 1; i > 0; i--) tbody.insertBefore(tmp_arr[i - 1], tmp_arr[i]);
+}
+
+const numConvert = s => (s == Number(s)) ? Number(s) : s;
+
+const getValue = (tr, idx) => tr.children[idx].innerText;
+
+const asc = idx => (a, b) => (numConvert(getValue(a, idx)) > numConvert(getValue(b, idx))) ? 1 : -1;
+const desc = idx => (a, b) => (numConvert(getValue(a, idx)) < numConvert(getValue(b, idx))) ? 1 : -1;
