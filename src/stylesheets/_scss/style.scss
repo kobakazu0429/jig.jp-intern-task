@@ -1,3 +1,4 @@
+@import "_normalize";
 @import "_variables.scss";
 
 html, body {
@@ -51,6 +52,62 @@ button {
 
 .btn-previous {
   float: right;
+}
+
+.searchs {
+  margin: -5px;
+}
+
+.searchs input[type="search"] {
+  display: block;
+  float: left;
+  margin: 5px;
+  outline: none;
+  height: 30px;
+  width: 30%;
+  padding: 5px 10px;
+  border: 2px solid $base-color;
+  border-radius: 3px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.searchs input[type="search"]:focus {
+  box-shadow: 0 0 1px $base-color;
+  border: 2px solid darken($base-color, 35%);
+}
+
+.categoryWrapper {
+  display: block;
+  margin: 5px;
+  float: left;
+  width: 40%;
+  position: relative;
+}
+
+.searchs select {
+  display: inline-block;
+  height: 30px;
+  width: 100%;
+  padding: 5px 10px;
+  outline: none;
+  border: 2px solid $base-color;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.categoryWrapper::before {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #666666;
+  pointer-events: none;
 }
 
 table {

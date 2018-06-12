@@ -25,9 +25,15 @@
     <button onclick="clearTBody()" class="btn">削除</button>
   </div>
 
-  <select name="category" id="category" onchange="filter(this.value)"></select>
+  <div class="searchs">
+    <input type="search" name="search" id="search" onchange="search(this.value)" placeholder="検索したい言葉を入力してください">
 
-  <input type="search" name="search" id="search" onchange="search(this.value)">
+    <div class="categoryWrapper">
+      <select name="category" id="category" onchange="filter(this.value)">
+          <option value="" hidden>絞り込むカテゴリーを選択をしてください</option>
+        </select>
+    </div>
+  </div>
 
   <br>
   <br>
