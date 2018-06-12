@@ -4,4 +4,4 @@
 
 ### Pre-need
 
-- `fukui-event.json` は `.gitignore` に追加していますので、確認の際は本リポジトリのルート直下にファイルを置いてください。
+- `fukui-event.json` は `.gitignore` に追加していますので、確認の際はドラッグ&ドロップ等で読み込んでください。
