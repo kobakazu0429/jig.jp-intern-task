@@ -1,3 +1,5 @@
+@import "_variables.scss";
+
 html, body {
   margin: 15px 30px;
 }
@@ -7,8 +9,9 @@ button {
 }
 
 .dd-zone {
-  border: 1px dashed rgba(68, 138, 255, .7);
-  background-color: rgba(68, 138, 255, .2);
+  background-color: lighten($base-color, 20%);
+  border: 1px dashed darken($base-color, 30%);
+  border-radius: 3px;
   display: flex;
   width: 100%;
   height: 50px;
@@ -18,28 +21,36 @@ button {
 }
 
 .myfile input {
-  display:none;
+  display: none;
 }
 .myfile img {
-  cursor:pointer;
-}
-
-.btns {
-  margin-left: -5px;
+  cursor: pointer;
 }
 
 .btn {
   display: inline-block;
   padding: 5px 10px;
-  border: solid 2px rgba(68, 138, 255, .7);
+  border: solid 2px $base-color;
   border-radius: 3px;
   transition: .2s;
 }
 
 .btn:hover {
   cursor: pointer;
-  background: rgba(68, 138, 255, .7);
+  background: $base-color;
   color: white;
+}
+
+.btns {
+  margin: 0 -5px;
+}
+
+.btn-next {
+  float: left;
+}
+
+.btn-previous {
+  float: right;
 }
 
 table {
