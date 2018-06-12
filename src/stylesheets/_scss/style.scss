@@ -47,11 +47,11 @@ button {
 }
 
 .btn-next {
-  float: left;
+  float: right;
 }
 
 .btn-previous {
-  float: right;
+  float: left;
 }
 
 .searchs {
@@ -74,7 +74,7 @@ button {
 
 .searchs input[type="search"]:focus {
   box-shadow: 0 0 1px $base-color;
-  border: 2px solid darken($base-color, 35%);
+  border: 2px solid darken($base-color, 5%);
 }
 
 .categoryWrapper {
