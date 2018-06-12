@@ -5,6 +5,7 @@
 
 html, body {
   margin: 15px 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
 }
 
 button {
@@ -127,4 +128,4 @@ button {
 
 .tableWrapper tr:nth-child(even), .tableWrapper th {
   background: lighten($base-color, 25%);
- }
+}
