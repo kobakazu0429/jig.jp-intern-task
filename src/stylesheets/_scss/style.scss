@@ -1,0 +1,50 @@
+html, body {
+  margin: 15px 30px;
+}
+
+button {
+  margin: 5px;
+}
+
+.dd-zone {
+  border: 1px dashed rgba(68, 138, 255, .7);
+  background-color: rgba(68, 138, 255, .2);
+  display: flex;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.myfile input {
+  display:none;
+}
+.myfile img {
+  cursor:pointer;
+}
+
+.btns {
+  margin-left: -5px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 5px 10px;
+  border: solid 2px rgba(68, 138, 255, .7);
+  border-radius: 3px;
+  transition: .2s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background: rgba(68, 138, 255, .7);
+  color: white;
+}
+
+table {
+  border-collapse: collapse;
+}
+table th, table td {
+  border: solid 1px black;
+}
