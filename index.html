@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="./src/stylesheets/style.css">
+  <title>jig.jpインターン課題</title>
+</head>
+<body>
+
+  <form name="myform" id="myform">
+    <label for="myfile" class="myfile">
+    	<div class="dd-zone">
+        <p>クリックしてJSONファイルを読み込むか、ドラッグ&amp;ドロップしてください</p>
+      </div>
+    	<input type="file" name="myfile" id="myfile">
+    </label>
+  </form>
+
+  <div class="btns">
+    <button onclick="showPart10()" class="btn">10件ずつ表示</button>
+    <button onclick="showPart30()" class="btn">30件ずつ表示</button>
+    <button onclick="show(datas)" class="btn">全件表示</button>
+    <button onclick="clearTBody()" class="btn">削除</button>
+  </div>
+
+  <div class="searchs">
+    <input type="search" name="search" id="search" onchange="search(this.value)" placeholder="検索したい言葉を入力してください">
+
+    <div class="categoryWrapper">
+      <select name="category" id="category" onchange="filter(this.value)">
+          <option value="" hidden>絞り込むカテゴリーを選択をしてください</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="tableWrapper">
+    <table id="result-table">
+      <thead>
+        <tr>
+          <th>番号</th>
+          <th>イベント名</th>
+          <th>カテゴリー</th>
+          <th>開始日</th>
+          <th>終了日</th>
+          <th>説明</th>
+          <th>予定の詳細</th>
+          <th>お問い合わせ先</th>
+          <th>お問い合わせ先電話番号</th>
+          <th>イベント場所</th>
+          <th>市町村</th>
+        </tr>
+      </thead>
+      <tbody id="result-table-body">
+      </tbody>
+    </table>
+  </div>
+
+  <div class="btns">
+    <button onclick="previous()" class="btn btn-previous"><i class="fas fa-fw fa-angle-left"></i>前を表示する</button>
+    <button onclick="next()" class="btn btn-next">次を表示する<i class="fas fa-fw fa-angle-right"></i></button>
+  </div>
+
+  <script src="./src/javascripts/script.js"></script>
+</body>
+</html>
