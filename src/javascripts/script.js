@@ -3,20 +3,44 @@ let reader = new FileReader();
 let table = document.getElementById('result-table');
 let tbody = document.getElementById('result-table-body');
 let ths = document.getElementsByTagName('th');
-let skip, lastIndex;
+let skip, lastIndex, datas;
 let select = document.getElementById('category');
+let ddZone = document.getElementById('dd-zone');
 
-myform.myfile.addEventListener('change', function (e) {
+myform.myfile.addEventListener('change', e => {
   reader.readAsText(e.target.files[0]);
-  reader.addEventListener('load', function (ev) {
-    datas = JSON.parse(ev.target.result);
-    refine();
-    show(datas);
-    createEventListener();
+  reader.addEventListener('load', ev => {
+    init(ev.target.result);
   });
 });
 
-const show = (arr) => {
+const handleFileSelect = e => {
+  e.stopPropagation();
+  e.preventDefault();
+
+  reader.readAsText(e.dataTransfer.files[0]);
+  reader.addEventListener('load', ev => {
+    init(ev.target.result);
+  });
+}
+
+const handleDragOver = e => {
+  e.stopPropagation();
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+}
+
+ddZone.addEventListener('dragover', handleDragOver, false);
+ddZone.addEventListener('drop', handleFileSelect, false);
+
+const init = result => {
+  datas = JSON.parse(result);
+  refine();
+  show(datas);
+  createEventListener();
+}
+
+const show = arr => {
   lastIndex = 0;
   for (let i = 0, arrLength = arr.length; i < arrLength; i++) {
     createRow(arr[i], i);

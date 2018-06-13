@@ -10,10 +10,10 @@
 
   <form name="myform" id="myform">
     <label for="myfile" class="myfile">
-    	<div class="dd-zone">
+      <div class="dd-zone" id="dd-zone">
         <p>クリックしてJSONファイルを読み込むか、ドラッグ&amp;ドロップしてください</p>
       </div>
-    	<input type="file" name="myfile" id="myfile">
+      <input type="file" name="myfile" id="myfile">
     </label>
   </form>
 
@@ -29,8 +29,8 @@
 
     <div class="categoryWrapper">
       <select name="category" id="category" onchange="filter(this.value)">
-          <option value="" hidden>絞り込むカテゴリーを選択をしてください</option>
-        </select>
+        <option value="" hidden>絞り込むカテゴリーを選択をしてください</option>
+      </select>
     </div>
   </div>
 
