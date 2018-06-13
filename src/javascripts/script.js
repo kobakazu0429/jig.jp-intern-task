@@ -53,6 +53,7 @@ const next = () => {
 const previous = () => {
   clearTBody();
   showPart(lastIndex - (2 * skip), (-1 * skip));
+  scrollTop();
 }
 
 const createRow = (data, count) => {
