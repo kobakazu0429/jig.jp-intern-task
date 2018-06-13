@@ -47,6 +47,7 @@ const showPart = (begin, type) => {
 const next = () => {
   clearTBody();
   showPart(lastIndex, skip);
+  scrollTop();
 }
 
 const previous = () => {
@@ -186,3 +187,7 @@ const getValue = (tr, idx) => tr.children[idx].innerText;
 
 const asc = idx => (a, b) => (numConvert(getValue(a, idx)) > numConvert(getValue(b, idx))) ? 1 : -1;
 const desc = idx => (a, b) => (numConvert(getValue(a, idx)) < numConvert(getValue(b, idx))) ? 1 : -1;
+
+const scrollTop = () => {
+  window.scrollTo(0, 0);
+}
