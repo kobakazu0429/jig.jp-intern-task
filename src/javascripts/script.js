@@ -128,6 +128,8 @@ const refine = () => {
 const filter = arg => {
   clearTBody();
 
+  if (arg === '全て') show(datas);
+
   let tmp_arr = [];
 
   for (let i = 0, datasLength = datas.length; i < datasLength; i++) {
